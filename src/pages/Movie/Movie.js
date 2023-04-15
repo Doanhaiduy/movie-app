@@ -12,7 +12,7 @@ function Movie() {
         document.title = currentMovie.title;
     }, [currentMovie.title]);
     return (
-        <div className="wrapper p-[24px] bg-gradient-to-r from-purple-500 to-pink-500 h-[100vh]  text-[#fff] lg:mt-[0px] mt-[-8px]">
+        <div className="wrapper p-[24px] bg-gradient-to-r from-purple-500 to-pink-500  text-[#fff] lg:mt-[0px] mt-[-8px]">
             <div className="w-full mx-auto mb-[12px]">
                 <h2 className="text-[4rem] font-bold ">{currentMovie.title}</h2>
                 <h4 className="font-semibold text-[2rem]">{currentMovie.original_title}</h4>

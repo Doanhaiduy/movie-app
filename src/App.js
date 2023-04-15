@@ -1,12 +1,18 @@
 import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import DefaultLayout from './layouts/DefaultLayout/';
+import routes from './config/routes';
 
 function App() {
     const handleSetTitle = (title) => {
         document.title = title;
     };
+
+    // To movies Page
+    if (window.location.pathname === '/') {
+        window.location.replace('/movies');
+    }
     return (
         <Router>
             <div className="app">
