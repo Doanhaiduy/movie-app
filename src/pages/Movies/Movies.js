@@ -1,8 +1,9 @@
-import { MovieItem } from '~/components/ListMovies';
-import ListMovies from '~/components/ListMovies/ListMovies';
-import Search from '~/components/Search/Search';
 import { useEffect } from 'react';
+
+import ListMovies from '~/components/ListMovies/';
+
 function Movies() {
+   
     useEffect(() => {
         document.title = 'Movies';
     }, []);

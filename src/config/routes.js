@@ -6,7 +6,7 @@ const routes = {
     comedy: '/comedy',
     musicVideo: '/musicVideo',
     other: '/other',
-    other2: '/movies/:nickname',
+    movie: '/movie/:nickname',
 };
 
 export default routes;

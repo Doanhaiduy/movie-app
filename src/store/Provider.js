@@ -1,5 +1,6 @@
 import { useReducer, useState } from 'react';
 import Context from './Context';
+
 import reducer, { initState } from './reducer';
 
 function Provider({ children }) {

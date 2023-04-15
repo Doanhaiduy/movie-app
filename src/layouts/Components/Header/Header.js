@@ -1,11 +1,9 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import config from '~/config';
+
 import routes from '~/config/routes';
 import NavItem from '~/components/NavItem/';
 
 function Header() {
-    console.log(config);
     return (
         <div className="w-full max-w-full bg-[#0f0f12] fixed z-50 hidden sm:block">
             <div className="flex lg:justify-between p-10 w-full text-[#fff] lg:px-[80px] lg:mx-auto justify-center">

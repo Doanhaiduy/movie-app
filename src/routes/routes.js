@@ -8,7 +8,8 @@ import Movies from '~/pages/Movies';
 import Comedy from '~/pages/Comedy/';
 import MusicVideos from '~/pages/MusicVideos/';
 import Shows from '~/pages/Shows/';
-import ComingSoon from '~/pages/CommingSoon/';
+import ComingSoon from '~/pages/ComingSoon/';
+import Movie from '~/pages/Movie/';
 
 //public routes
 const publicRoutes = [
@@ -49,9 +50,10 @@ const publicRoutes = [
         title: 'Coming Soon...',
     },
     {
-        path: config.routes.other2,
-        component: ComingSoon,
-        title: 'Coming Soon...',
+        path: config.routes.movie,
+        component: Movie,
+        title: 'Movie',
+        noUseSide: true
     },
 ];
 

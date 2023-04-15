@@ -1,9 +1,10 @@
-import { ADD_TO_FAVORITE, DELETE_FAVORITE, HANDLE_DISABLE_BTN } from './Constants';
+import { ADD_TO_FAVORITE, DELETE_FAVORITE, HANDLE_DISABLE_BTN, SET_CURRENT_MOVIE } from './Constants';
 
 const favoriteMoviesLocal = JSON.parse(localStorage.getItem('moviesFavorite')) || [];
 export const initState = {
     favoriteMovies: [...favoriteMoviesLocal],
-    moviesInFavorite: favoriteMoviesLocal.map((item) => item.imdbID),
+    moviesInFavorite: favoriteMoviesLocal.map((item) => item.id),
+    currentMovie: favoriteMoviesLocal[0],
 };
 
 const reducer = (state, action) => {
@@ -29,6 +30,13 @@ const reducer = (state, action) => {
             const newState = {
                 ...state,
                 moviesInFavorite: [...state.moviesInFavorite, action.payload],
+            };
+            return newState;
+        }
+        case SET_CURRENT_MOVIE: {
+            const newState = {
+                ...state,
+                currentMovie: action.payload,
             };
             return newState;
         }

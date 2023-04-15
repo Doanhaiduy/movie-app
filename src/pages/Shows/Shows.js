@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import React from 'react';
 
 function Shows() {
     useEffect(() => {
         document.title = 'Shows';
     }, []);
+    
     return (
         <div className=" w-full h-[1000px] ">
             <h2 className="text-[6rem] text-[orange] font-bold underline flex items-center justify-center">
