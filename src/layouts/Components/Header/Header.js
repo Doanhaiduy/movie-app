@@ -7,13 +7,13 @@ function Header() {
     return (
         <div className="w-full max-w-full bg-[#0f0f12] fixed z-50 block">
             <div className="flex lg:justify-between p-10 w-full text-[#fff] lg:px-[80px] lg:mx-auto justify-center">
-                <nav className="flex text-[1.6rem] font-medium ">
+                <nav className="flex sm:text-[1.6rem] text-[1.1rem] font-medium ">
                     <NavItem
                         title="Home"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.home}
                     >
@@ -23,8 +23,8 @@ function Header() {
                         title="Movies"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.movies}
                     >
@@ -34,8 +34,8 @@ function Header() {
                         title="Favorite"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.favorite}
                     >
@@ -45,8 +45,8 @@ function Header() {
                         title="Shows"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.shows}
                     >
@@ -56,8 +56,8 @@ function Header() {
                         title="Comedy"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.comedy}
                     >
@@ -67,8 +67,8 @@ function Header() {
                         title="Music Videos"
                         className={({ isActive }) =>
                             isActive
-                                ? 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
-                                : 'mx-[16px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
+                                ? 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px]  hover:border-[--primary] leading-[2rem] border-b-[2px] border-[--primary]'
+                                : 'sm:mx-[16px] mx-[5px] hover:border-b-[2.5px] hover:border-[--primary] leading-[2rem]'
                         }
                         to={routes.musicVideo}
                     >
@@ -76,10 +76,10 @@ function Header() {
                     </NavItem>
                 </nav>
                 <div className="lg:flex hidden">
-                    <Link to={routes.home} className="mx-[16px] ">
+                    <Link to={routes.home} className="sm:mx-[16px] mx-[5px] ">
                         Subscribe
                     </Link>
-                    <Link to={routes.home} className="mx-[16px] ">
+                    <Link to={routes.home} className="sm:mx-[16px] mx-[5px] ">
                         Sign in
                     </Link>
                 </div>

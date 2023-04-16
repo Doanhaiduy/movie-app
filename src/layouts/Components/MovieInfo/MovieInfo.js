@@ -12,7 +12,7 @@ function MovieInfo({ currentMovie }) {
                 src={IMG_PATH + currentMovie.poster_path}
                 alt=""
             />
-            <div className="flex flex-col  gap-y-[12px] justify-center col-span-2 sm:col-span-1">
+            <div className="flex flex-col  gap-y-[12px] justify-center col-span-2 sm:col-span-1 ml-[10px]">
                 <p className="text-[1.8rem] font-bold mt-[20px]">
                     Vote count:
                     <span className="text-yellow-400"> {currentMovie.vote_count}</span>

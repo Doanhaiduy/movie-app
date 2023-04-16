@@ -21,7 +21,7 @@ function TrailerVideo({ id }) {
     }, [id]);
     return (
         <ReactPlayer
-            width={700}
+            width={'50vw'}
             // height={00}
             style={{ borderRadius: '10px' }}
             url={`https://www.youtube.com/watch?v=${movie}`}
