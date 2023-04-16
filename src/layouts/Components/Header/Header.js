@@ -5,7 +5,7 @@ import NavItem from '~/components/NavItem/';
 
 function Header() {
     return (
-        <div className="w-full max-w-full bg-[#0f0f12] fixed z-50 hidden sm:block">
+        <div className="w-full max-w-full bg-[#0f0f12] fixed z-50 block">
             <div className="flex lg:justify-between p-10 w-full text-[#fff] lg:px-[80px] lg:mx-auto justify-center">
                 <nav className="flex text-[1.6rem] font-medium ">
                     <NavItem
@@ -76,9 +76,6 @@ function Header() {
                     </NavItem>
                 </nav>
                 <div className="lg:flex hidden">
-                    <Link to={routes.home} className="mx-[16px] ">
-                        Search
-                    </Link>
                     <Link to={routes.home} className="mx-[16px] ">
                         Subscribe
                     </Link>

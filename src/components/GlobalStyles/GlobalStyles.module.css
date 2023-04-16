@@ -4,6 +4,8 @@
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-margin-top: 50px;
 }
 
 * {

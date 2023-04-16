@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 function Sidebar() {
     return (
-        <div>
+        <div className="w-full relative">
             <aside
                 id="separator-sidebar"
-                className="fixed top-[70px] left-0 z-40 w-[230px] h-screen transition-transform -translate-x-full sm:translate-x-0"
+                className="fixed top-[70px] left-0 z-40 lg:w-[15vw] sm:w-[10vw] h-screen transition-transform -translate-x-full sm:translate-x-0"
                 aria-label="Sidebar"
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-[#0f0f12]">

@@ -7,7 +7,7 @@ function Image({ src, ...props }) {
         setFallback('https://blog.logrocket.com/wp-content/uploads/2021/04/getting-started-with-create-react-app.png');
     };
 
-    if (src === 'N/A' || !src) {
+    if (src === 'N/A' || !src || src.slice(-4) === 'null') {
         src = fallback;
     }
 

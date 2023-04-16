@@ -6,44 +6,41 @@ import Search from '../Search/';
 import MovieItem from './MovieItem';
 import { FavoriteContext } from '~/store';
 import { addToFavorite, handleDisableBtn } from '~/store/actions';
+import { search as searchServices, trending, similar } from '~/services';
 
-function ListMovies() {
+function ListMovies({ page = false }) {
     const [movies, setMovies] = useState([]);
-    const [hasMovies, setHasMovies] = useState(true);
     const [favoriteMovies, dispatch] = useContext(FavoriteContext);
     const [moviesHasDisable, setMoviesHasDisable] = useState([]);
-
-    const renderListMovies = async (search) => {
-        await axios
-            .get('https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=' + search)
-            .then(function (response) {
-                // handle success
-                if (response.data.results.length > 0) {
-                    setHasMovies(true);
-                    setMovies(response.data.results);
-                } else {
-                    setHasMovies(false);
-                }
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    };
-
+    console.log('render nè');
+    let fetchApi = function () {};
+    switch (page) {
+        case 'home': {
+            fetchApi = async () => {
+                const result = await trending();
+                setMovies(result.results);
+            };
+            break;
+        }
+        default:
+            fetchApi = async (search) => {
+                const result = await searchServices(search);
+                setMovies(result.results);
+            };
+    }
 
     useEffect(() => {
         console.log('re-render');
-        renderListMovies('a');
+        fetchApi('a');
     }, []);
 
-
     const handleSearch = (searchInput) => {
-        if (searchInput !== '' || searchInput.length > 3) renderListMovies(searchInput);
+        if (searchInput !== '' || searchInput.length > 3) {
+            fetchApi(searchInput);
+        }
+
         return;
     };
-
-
     const handleAddFavoriteMovie = (movie) => {
         localStorage.setItem('moviesFavorite', JSON.stringify([...favoriteMovies.favoriteMovies, movies[movie]]));
         setMoviesHasDisable([...moviesHasDisable, movies[movie].id]);
@@ -51,26 +48,47 @@ function ListMovies() {
         dispatch(addToFavorite(movies[movie]));
     };
 
-    
     return (
         <>
-            <Search onSubmit={handleSearch} />
-            <div className=" grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px] mt-5">
-                {hasMovies ? (
-                    movies.map((movie, index) => (
-                        <MovieItem
-                            data={movie}
-                            key={index}
-                            index={index}
-                            handleAddFavoriteMovie={handleAddFavoriteMovie}
-                        />
-                    ))
-                ) : (
-                    <div className="w-full col-span-full mt-6">
-                        <h2 className="text-center text-[24px]">Can't find the movie on demand</h2>
+            {page ? (
+                <div className="p-[30px] grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px]">
+                    {movies.length > 0 ? (
+                        movies.map((movie, index) => (
+                            <MovieItem
+                                data={movie}
+                                key={index}
+                                index={index}
+                                isHome
+                                handleAddFavoriteMovie={handleAddFavoriteMovie}
+                            />
+                        ))
+                    ) : (
+                        <div className="w-full col-span-full mt-6">
+                            <h2 className="text-center text-[24px]">Can't find the movie on demand</h2>
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <>
+                    <Search onSubmit={handleSearch} />
+                    <div className=" grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px] mt-5">
+                        {movies.length > 0 ? (
+                            movies.map((movie, index) => (
+                                <MovieItem
+                                    data={movie}
+                                    key={index}
+                                    index={index}
+                                    handleAddFavoriteMovie={handleAddFavoriteMovie}
+                                />
+                            ))
+                        ) : (
+                            <div className="w-full col-span-full mt-6">
+                                <h2 className="text-center text-[24px]">Can't find the movie on demand</h2>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
+                </>
+            )}
         </>
     );
 }

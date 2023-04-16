@@ -7,15 +7,21 @@
         <title>Document</title>
     </head>
     <body>
+        <!-- 
+                        breakpoint:
+                        
+                        None	width: 100%;
+                        sm (640px)	min-width: 640px;
+                        md (768px)	min-width: 768px;
+                        lg (1024px)	min-width: 1024px;
+                        xl (1280px)	min-width: 1280px;
+                        2xl (1536px)	min-width: 1536px;
+                -->
         <script>
-            fetch('how')
-                .then((Response) => Response.json())
-                .then((data) => {
-                    data.results.map((item) => {
-                        // console.log(item);
-                        console.log(item.original_title);
-                    });
-                });
+            fetch('https://api.themoviedb.org/3/movie/257049/credits?&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1')
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+                .catch((error) => console.error(error));
         </script>
     </body>
 </html>

@@ -13,15 +13,15 @@ function MovieItem({
     isFavorite = false,
     handleDeleteFavoriteMovie,
     isSuggested = false,
+    isHome = false,
 }) {
-
     const [favoriteMovies, dispatch] = useContext(FavoriteContext);
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
     const handleSetCurrentMovie = (payload) => {
-        dispatch(setCurrentMovie(payload));
+        window.scrollTo(0, 0);
+        dispatch(setCurrentMovie({ obj: payload }));
     };
-
 
     return !isSuggested ? (
         <div className="  max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -110,14 +110,14 @@ function MovieItem({
             onClick={() => {
                 handleSetCurrentMovie(data);
             }}
-            className="px-4 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+            className=" sm:p-4 px-4 flex flex-col items-center bg-white border border-gray-200 rounded-[15px] shadow lg:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 overflow-hidden "
         >
-            <img
-                className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+            <Image
+                className="object-cover w-full  h-96 lg:h-auto lg:w-48 rounded-[25px] hover:scale-[1.1] transition mb-6 lg:rounded-r-none rounded-b-none "
                 src={IMG_PATH + data.poster_path}
                 alt=""
             />
-            <div className="flex flex-col justify-between p-4 leading-normal">
+            <div className="flex flex-col justify-between p-4 leading-normal overflow-x-hidden">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-5">{data.overview}</p>
             </div>
