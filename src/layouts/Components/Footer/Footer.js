@@ -11,7 +11,7 @@ function Footer() {
                     height={90}
                 />
             </div>
-            <div className="flex gap-5 ">
+            <div className="flex flex-wrap justify-center gap-5 ">
                 <Link>Write For Us</Link>
                 <Link>Home</Link>
                 <Link>Contact Us</Link>
