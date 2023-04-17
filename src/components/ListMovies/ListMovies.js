@@ -4,16 +4,17 @@ import { useContext } from 'react';
 
 import Search from '../Search/';
 import MovieItem from './MovieItem';
-import { FavoriteContext } from '~/store';
+import { MovieContext } from '~/store';
 import { addToFavorite, handleDisableBtn } from '~/store/actions';
 import { search as searchServices, trending, similar } from '~/services';
 
 function ListMovies({ page = false }) {
     const [movies, setMovies] = useState([]);
-    const [favoriteMovies, dispatch] = useContext(FavoriteContext);
+    const [favoriteMovies, dispatch] = useContext(MovieContext);
     const [moviesHasDisable, setMoviesHasDisable] = useState([]);
-    console.log('render nè');
-    let fetchApi = function () {};
+
+    let fetchApi = function () { };
+    
     switch (page) {
         case 'home': {
             fetchApi = async () => {
@@ -51,7 +52,7 @@ function ListMovies({ page = false }) {
     return (
         <>
             {page ? (
-                <div className="p-[30px] grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px]">
+                <div className="p-[30px]  grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px]">
                     {movies.length > 0 ? (
                         movies.map((movie, index) => (
                             <MovieItem
@@ -71,7 +72,7 @@ function ListMovies({ page = false }) {
             ) : (
                 <>
                     <Search onSubmit={handleSearch} />
-                    <div className=" grid 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-x-1 gap-[16px] mt-5">
+                    <div className=" grid mx-10 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-[16px] mt-5">
                         {movies.length > 0 ? (
                             movies.map((movie, index) => (
                                 <MovieItem

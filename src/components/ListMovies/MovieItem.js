@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import Image from '~/components/Image';
 import routes from '~/config/routes';
-import { FavoriteContext } from '~/store';
+import { MovieContext } from '~/store';
 import { setCurrentMovie } from '~/store/actions';
 
 function MovieItem({
@@ -15,16 +15,17 @@ function MovieItem({
     isSuggested = false,
     isHome = false,
 }) {
-    const [favoriteMovies, dispatch] = useContext(FavoriteContext);
+    const [state, dispatch] = useContext(MovieContext);
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
+    const ListMoviesFavoriteStorage = JSON.parse(localStorage.getItem('moviesFavorite')) || [];
+    const ListIdsFavoriteStorage = ListMoviesFavoriteStorage.map((item) => item.id);
     const handleSetCurrentMovie = (payload) => {
         window.scrollTo(0, 0);
         dispatch(setCurrentMovie({ obj: payload }));
     };
-
     return !isSuggested ? (
-        <div className="  max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className=" max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <Link
                 className=""
                 to={'/movie/' + data.id}
@@ -55,22 +56,22 @@ function MovieItem({
                     onClick={() => {
                         handleSetCurrentMovie(data);
                     }}
-                    className="text-white bg-gradient-to-br text-[1.4rem] from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg  px-5 py-3.5 text-center mr-2 mb-2 w-full"
+                    className="text-white bg-gradient-to-br text-[1.4rem] from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg item-center justify-center px-5 py-3.5 flex text-center mr-2 mb-2 w-full"
                 >
                     Watch Now
                 </Link>
                 {!isFavorite ? (
-                    !favoriteMovies.moviesInFavorite.includes(data.id) ? (
+                    !ListIdsFavoriteStorage.includes(data.id) ? (
                         <button
                             onClick={() => {
                                 handleAddFavoriteMovie(index);
                             }}
                             className="
                             select-none
-                    relative inline-flex items-center justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white  
-                    mt-[16px]"
+                    relative inline-flex items-center justify-center w-full p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white  
+                    "
                         >
-                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span className=" relative px-5 w-full py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 Add To Favorite
                             </span>
                         </button>
@@ -80,10 +81,10 @@ function MovieItem({
                                 pointer-events-none
                             select-none
                                 opacity-50
-                    relative inline-flex items-center justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white 
+                    relative inline-flex items-center w-full justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white 
                     "
                         >
-                            <span className="  relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 ">
+                            <span className=" w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 ">
                                 Added
                             </span>
                         </button>
@@ -94,10 +95,10 @@ function MovieItem({
                             handleDeleteFavoriteMovie(index);
                         }}
                         className="
-                    relative inline-flex items-center justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
+                    relative inline-flex w-full items-center justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
                     "
                     >
-                        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        <span className="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                             Delete
                         </span>
                     </button>

@@ -4,7 +4,7 @@ const favoriteMoviesLocal = JSON.parse(localStorage.getItem('moviesFavorite')) |
 const movieCurrent = JSON.parse(localStorage.getItem('movieCurrent')) || '';
 export const initState = {
     favoriteMovies: [...favoriteMoviesLocal],
-    moviesInFavorite: favoriteMoviesLocal.map((item) => item.id),
+    idMoviesInFavorite: favoriteMoviesLocal.map((item) => item.id),
     currentMovie: {
         movieCurrentObj: movieCurrent.movieCurrentObj,
         movieCurrentURL: movieCurrent.movieCurrentURL,
@@ -22,17 +22,19 @@ const reducer = (state, action) => {
         }
         case DELETE_FAVORITE: {
             const newFavoriteMovies = state.favoriteMovies.filter((item, index) => index !== action.payload);
-            localStorage.setItem('moviesFavorite', JSON.stringify(newFavoriteMovies));
+            // localStorage.setItem('moviesFavorite', JSON.stringify(newFavoriteMovies));
+
             const newState = {
                 ...state,
                 favoriteMovies: [...newFavoriteMovies],
             };
+            localStorage.setItem('moviesFavorite', JSON.stringify(newState.favoriteMovies));
             return newState;
         }
         case HANDLE_DISABLE_BTN: {
             const newState = {
                 ...state,
-                moviesInFavorite: [...state.moviesInFavorite, action.payload],
+                idMoviesInFavorite: [...state.idMoviesInFavorite, action.payload],
             };
             return newState;
         }

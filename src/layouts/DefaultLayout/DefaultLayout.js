@@ -3,11 +3,12 @@ import { Fragment } from 'react';
 import Header from '../Components/Header/';
 import Sidebar from '../Components/Sidebar/';
 import Footer from '../Components/Footer/Footer';
+import SidebarFooter from '~/layouts/Components/SidebarFooter';
 
-function DefaultLayout({ children, noUseSide = false }) {
+function DefaultLayout({ children, noUseSide = false, title }) {
     return (
         <div className="">
-            <Header />
+            <Header title={title} />
             <div className="flex items-center ">
                 {noUseSide ? (
                     <div className=" mt-[72px] w-[100vw] ">{children}</div>
@@ -20,6 +21,7 @@ function DefaultLayout({ children, noUseSide = false }) {
                     </>
                 )}
             </div>
+            <SidebarFooter />
             <Footer />
         </div>
     );

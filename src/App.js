@@ -16,7 +16,7 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <DefaultLayout noUseSide={route.noUseSide}>
+                                    <DefaultLayout title={route.title} noUseSide={route.noUseSide}>
                                         <Page />
                                     </DefaultLayout>
                                 }

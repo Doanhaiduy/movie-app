@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 
+import Image from '~/components/Image';
+
 function Footer() {
     return (
-        <footer className="flex justify-center items-center flex-col py-[30px] bg-slate-500  gap-y-[20px] text-gray-300 text-[1.2rem]">
+        <footer className="flex justify-center items-center flex-col py-[30px] bg-slate-500  gap-y-[20px] text-gray-300 text-[1.2rem] sm:mb-0 mb-[65px]">
             <div className="">
-                <img
+                <Image
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
                     alt=""
                     width={90}

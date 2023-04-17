@@ -1,2 +1,2 @@
-export { default as FavoriteProvider } from './Provider';
-export { default as FavoriteContext } from './Context';
+export { default as MovieProvider } from './Provider';
+export { default as MovieContext } from './Context';

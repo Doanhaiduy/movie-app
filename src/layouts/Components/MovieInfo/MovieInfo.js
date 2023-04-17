@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
+import Image from '~/components/Image';
 
 function MovieInfo({ currentMovie }) {
+    const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
     const URL = currentMovie.movieCurrentURL;
     currentMovie = currentMovie.movieCurrentObj;
-    const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
     return (
         <div className="p-[20px] overflow-hidden wrapper grid grid-cols-4 sm:grid-cols-4  gap-x-[12px] mx-auto sm:h-[360px] lg:w-[70vw] text-gray-200 bg-gradient-to-r from-slate-900 to-slate-600 bg-opacity-90 rounded-[24px] backdrop-blur-3xl ">
-            <img
-                className="sm:w-[200px] h-[100%] object-cover rounded-[12px] col-span-4 sm:col-span-1 "
+            <Image
+                className="sm:w-[200px] sm:h-[100%] h-[50vh] w-full object-cover rounded-[12px] col-span-4 sm:col-span-1 "
                 src={IMG_PATH + currentMovie.poster_path}
                 alt=""
             />
@@ -45,13 +46,13 @@ function MovieInfo({ currentMovie }) {
                 <Link
                     to={'https://www.youtube.com/embed/' + URL}
                     target="_blank"
-                    className="mb-[20px] flex text-[#fff] justify-center items-center max-w-[150px] max-h-[40px] bg-[--primary] font-bold rounded-[6px] px-[12px] py-[6px] hover:opacity-[0.9] text-[2rem] cursor-pointer w-[200px]"
+                    className="mb-[20px] flex text-[#fff] justify-center items-center max-w-[150px] max-h-[40px] bg-[--primary] font-bold rounded-[6px] px-[12px] py-[6px] hover:opacity-[0.9] text-[1rem] sm:text-[2rem] cursor-pointer w-[200px]"
                 >
                     Watch Now
                 </Link>
                 <Link
                     to="#"
-                    className="mb-[20px] flex text-[#fff] justify-center items-center max-w-[150px] max-h-[40px] bg-green-500 font-bold rounded-[6px] px-[12px] py-[6px] hover:opacity-[0.9] text-[2rem] cursor-pointer w-[200px]"
+                    className="mb-[20px] flex text-[#fff] justify-center items-center max-w-[150px] max-h-[40px] bg-green-500 font-bold rounded-[6px] px-[12px] py-[6px] hover:opacity-[0.9] text-[1rem] sm:text-[2rem] cursor-pointer w-[200px]"
                 >
                     DownLoad
                 </Link>
