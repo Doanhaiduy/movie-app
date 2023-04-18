@@ -1,4 +1,4 @@
-import { ADD_TO_FAVORITE, DELETE_FAVORITE, HANDLE_DISABLE_BTN, SET_CURRENT_MOVIE } from './Constants';
+import { ADD_TO_FAVORITE, DELETE_FAVORITE, HANDLE_DISABLE_BTN, SET_CURRENT_MOVIE, SET_THEME } from './Constants';
 
 const favoriteMoviesLocal = JSON.parse(localStorage.getItem('moviesFavorite')) || [];
 const movieCurrent = JSON.parse(localStorage.getItem('movieCurrent')) || '';
@@ -9,6 +9,7 @@ export const initState = {
         movieCurrentObj: movieCurrent.movieCurrentObj,
         movieCurrentURL: movieCurrent.movieCurrentURL,
     },
+    isDarkMode: false,
 };
 
 const reducer = (state, action) => {
@@ -46,7 +47,6 @@ const reducer = (state, action) => {
                     movieCurrentURL: action.payload.url ? action.payload.url : '',
                 }),
             );
-
             const newState = {
                 ...state,
                 currentMovie: {
@@ -56,6 +56,16 @@ const reducer = (state, action) => {
                 },
             };
             return newState;
+        }
+        case SET_THEME: {
+            console.log('prev: ', state.isDarkMode);
+            const newsState = {
+                ...state,
+                isDarkMode: state.isDarkMode ? false : true,
+            };
+            console.log('next: ', newsState.isDarkMode);
+
+            return newsState;
         }
         default:
             throw new Error('invalid actions');

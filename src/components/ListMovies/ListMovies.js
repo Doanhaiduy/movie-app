@@ -13,6 +13,7 @@ function ListMovies({ page = false }) {
     const [favoriteMovies, dispatch] = useContext(MovieContext);
     const [moviesHasDisable, setMoviesHasDisable] = useState([]);
 
+
     let fetchApi = function () { };
     
     switch (page) {

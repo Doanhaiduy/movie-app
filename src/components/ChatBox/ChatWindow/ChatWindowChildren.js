@@ -3,6 +3,9 @@ import ChatSearchMovie from './ChatSearchMovie';
 import { Link } from 'react-router-dom';
 import { search as searchService } from '~/services';
 import ItemMovie from './ItemMovie';
+import Image from '~/components/Image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSmile, faSmileWink } from '@fortawesome/free-solid-svg-icons';
 const select = [
     {
         title: 'Hi, can you recommend an action movie?', //user question
@@ -26,10 +29,7 @@ const select = [
         children: [
             {
                 title: 'How about we watch action movie 2?',
-                answer: [
-                    'That sounds like an action movie. Do you have any comedy recommendations?',
-                    "Okay, let's watch it!",
-                ],
+                answer: ['Sure, hwe can go to the theater to see them.', 'Do you want to invite someone to watch?'],
                 children: [
                     {
                         answer: [
@@ -74,6 +74,10 @@ const select = [
         children: [
             {
                 title: 'How about a thriller movie called "The Shining"?',
+                answer: [
+                    'You should watch "The Conjuring" and "Hereditary".',
+                    'I recommend "Get Out" and "A Quiet Place".',
+                ],
                 children: [
                     {
                         answer: ['What is it about?', 'Is it scary?'],
@@ -121,7 +125,7 @@ const select = [
     },
 ];
 
-function ChatWindowChildren({ handleMoveChatOnline, name }) {
+function ChatWindowChildren({ name }) {
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
@@ -145,30 +149,38 @@ function ChatWindowChildren({ handleMoveChatOnline, name }) {
             <div className="p-[30px] pt-[16px] min-h-[320px] max-h-[320px] overflow-y-auto">
                 <div>
                     <div className="my-[10px]">
-                        <span className="text-[1rem] block text-center my-[12px]">
+                        <span className="text-[1.2rem] block text-center my-[12px]">
                             Chat started at {hours}:{minutes}:{seconds}
                         </span>
                         <div className="relative  mt-[5px] flex  ">
-                            <img
+                            <Image
                                 className="w-[40px] h-[40px] rounded-[50%] mt-[auto]"
                                 src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/307874360_1427033874453040_2021416674074107398_n.jpg?stp=dst-jpg_p200x200&_nc_cat=101&ccb=1-7&_nc_sid=7206a8&_nc_ohc=wCtfeqk-FgYAX9xEiul&_nc_oc=AQlnDImlzXKNBkaY23IqU6f6g2n48Am9pFNeRW1dED55ZbtIEvgsNHI0X9qQAg0y8PJ6nmxHcpn2prLenZbHVU8y&_nc_ht=scontent.fdad3-4.fna&oh=00_AfBi-dVFM2cjiXzq1EwIngrg1XWuim4Fe2Woa5q9eDeGhg&oe=6441C608"
                                 alt=""
                             />
-                            {movies.length > 0 ? (
+                            {onSearch ? (
                                 <div>
-                                    <div className="ml-[12px] grid grid-cols-2 gap-[5px]">
-                                        {movies.map((movie, index) => (
-                                            <ItemMovie key={index} data={movie} />
-                                        ))}
-                                    </div>
-                                    <h2 className="inline-block p-4 text-[#fff] max-w-max w-full text-[1.3rem] rounded-[10px] ml-[12px] mt-[12px] bg-blue-500">
-                                        Here are the movies you might be looking for
-                                    </h2>
+                                    {movies.length > 0 ? (
+                                        <>
+                                            <div className="ml-[12px] grid grid-cols-2 gap-[5px]">
+                                                {movies.map((movie, index) => (
+                                                    <ItemMovie key={index} data={movie} />
+                                                ))}
+                                            </div>
+                                            <h2 className="inline-block p-4 text-[#fff] max-w-max  text-[1.3rem] rounded-[10px] ml-[12px] mt-[12px] bg-blue-500 w-[70%]">
+                                                Above are the movies you may be looking for, click to watch
+                                            </h2>
+                                        </>
+                                    ) : (
+                                        <h2 className="inline-block p-4 text-[#fff] max-w-max  text-[1.3rem] rounded-[10px] ml-[12px] mt-[12px] bg-blue-500 w-[70%]">
+                                            No movies were found that match your keyword, please enter another keyword
+                                        </h2>
+                                    )}
                                 </div>
                             ) : null}
                             <div
                                 className={
-                                    movies.length > 0
+                                    onSearch
                                         ? 'hidden flex-col ml-[6px] gap-[8px] w-[70%] '
                                         : 'inline-flex flex-col ml-[6px] gap-[8px] w-[70%] '
                                 }
@@ -198,7 +210,7 @@ function ChatWindowChildren({ handleMoveChatOnline, name }) {
 
                     <div
                         className={
-                            movies.length > 0
+                            onSearch
                                 ? 'hidden flex-col items-center gap-y-[14px] mt-[30px]'
                                 : 'flex flex-col items-center gap-y-[14px] mt-[30px]'
                         }
@@ -211,14 +223,15 @@ function ChatWindowChildren({ handleMoveChatOnline, name }) {
                                         // setChatUser(option.title);
                                         option.children ? setOptionChat(option.children) : setOptionChat([]);
                                     }}
-                                    className="py-[4px] text-center px-[14px] border-[1px] rounded-[999px] border-gray-600 flex"
+                                    className="py-[4px] text-center px-[14px] border-[1px] cursor-pointer rounded-[999px] border-gray-600 hover:bg-slate-500 hover:text-gray-200 transition-colors flex"
                                 >
                                     {option.title}
                                 </p>
                             ))
                         ) : (
                             <h2 className="w-[100%] text-center text-gray-700 text-[1.5rem]">
-                                Thank you for answering the questions. Have fun watching movies!
+                                Thanks for using our feature, we are in the process of developing and perfecting it.
+                                Have fun watching movies <FontAwesomeIcon icon={faSmileWink} />
                             </h2>
                         )}
                     </div>

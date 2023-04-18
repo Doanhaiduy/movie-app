@@ -21,13 +21,13 @@ function ChatWindow({ handleOpenChat }) {
 
     return (
         <div className="cursor-auto w-[360px]  bottom-[150px] right-[30px]  h-[450px] bg-white fixed sm:right-[60px]  rounded-[16px] font-thin">
-            <div className="w-full font-thin text-white bg-gradient-to-r from-slate-900 to-slate-600 bg-opacity-90 rounded-t-[16px] py-[12px] px-[10px] flex items-center">
-                Let's chat? -We're online
+            <div className="w-full  font-thin text-white bg-gradient-to-r from-slate-900 to-slate-600 bg-opacity-90 rounded-t-[16px] py-[12px] px-[10px] flex items-center">
+                <p className="">Let's chat? - We're online</p>
                 <FontAwesomeIcon icon={faCircle} className="ml-[10px] text-[1rem] text-green-500" />
                 <FontAwesomeIcon
                     icon={faXmark}
                     onClick={handleOpenChat}
-                    className="ml-[100px] p-2 cursor-pointer text-[1.9rem]"
+                    className="ml-[90px] p-2 cursor-pointer text-[1.9rem]"
                 />
             </div>
             {!startChatOnline ? (

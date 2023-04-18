@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
+import { MovieContext } from '~/store';
 
 import routes from '~/config/routes';
 import NavItem from '~/components/NavItem/';
@@ -7,9 +8,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SearchMovie from '../SearchMovie/SearchMovie';
 import Image from '~/components/Image';
+import { setTheme } from '~/store/actions';
+import Theme from '../Theme';
 
 function Header({ title }) {
+    const [state, dispatch] = useContext(MovieContext);
+    const isDarkMode = state.isDarkMode;
+
     const [activeSearch, setActiveSearch] = useState(false);
+
+    const setIsDarkMode = () => {
+        dispatch(setTheme());
+    };
+
     const handleClick = () => {
         activeSearch ? setActiveSearch(false) : setActiveSearch(true);
     };
@@ -19,8 +30,12 @@ function Header({ title }) {
     };
 
     return (
-        <div className="w-full max-w-full bg-[#0f0f12] fixed z-50 block">
-            <div className="flex relative items-center lg:justify-between p-10 sm:w-full text-[#fff] lg:px-[80px] lg:mx-auto  justify-between w-[100vw]">
+        <div className={`w-full max-w-full fixed z-50 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-200'}`}>
+            <div
+                className={`flex relative items-center lg:justify-between p-10 sm:w-full ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-900'
+                } lg:px-[80px] lg:mx-auto  justify-between w-[100vw]`}
+            >
                 <nav className="sm:flex hidden lg:text-[1.8rem] 2xl:text-[2.2rem] text-[1.2rem] font-medium ">
                     <NavItem
                         onClick={handleScrollToTop}
@@ -70,7 +85,7 @@ function Header({ title }) {
                     >
                         Shows
                     </NavItem>
-                    <NavItem
+                    {/* <NavItem
                         onClick={handleScrollToTop}
                         title="Comedy"
                         className={({ isActive }) =>
@@ -81,7 +96,7 @@ function Header({ title }) {
                         to={routes.comedy}
                     >
                         Comedy
-                    </NavItem>
+                    </NavItem> */}
                     <NavItem
                         onClick={handleScrollToTop}
                         title="Music Videos"
@@ -108,21 +123,24 @@ function Header({ title }) {
                         src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png"
                         width={67}
                         alt=""
-                        className="object-cover w-[67px]"
+                        className="object-cover w-[67px] min-w-[67px] mr-[4px]"
                     />
                 </Link>
                 {activeSearch ? (
                     <SearchMovie activeSearch={activeSearch} />
                 ) : (
-                    <h2 className="text-[2.4rem] font-semibold  text-center sm:hidden pr-10">{title}</h2>
+                    <h2 className="flex-1 text-[2.4rem] font-semibold  text-center sm:hidden pr-10">{title}</h2>
                 )}
 
                 <div className="">
                     <FontAwesomeIcon
                         onClick={handleClick}
-                        className="text-[1.8rem] ml-5 py-[4px] cursor-pointer font-bold"
+                        className="text-[1.8rem]  py-[4px] cursor-pointer font-bold"
                         icon={faSearch}
                     />
+                </div>
+                <div className="px-[10px]">
+                    <Theme toggle={setIsDarkMode} theme={isDarkMode} />
                 </div>
             </div>
         </div>

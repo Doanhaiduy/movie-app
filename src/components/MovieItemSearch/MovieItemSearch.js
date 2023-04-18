@@ -5,7 +5,7 @@ import { MovieContext } from '~/store';
 import { useContext } from 'react';
 import { setCurrentMovie } from '~/store/actions';
 
-function MovieItemSearch({ data, onClick }) {
+function MovieItemSearch({ data, onClick, isDarkMode }) {
     const [state, dispatch] = useContext(MovieContext);
 
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
@@ -19,7 +19,11 @@ function MovieItemSearch({ data, onClick }) {
                 onClick(data);
             }}
             to={'/movie/' + data.id}
-            className="text-gray-700 flex gap-x-4 items-center p-4 bg-white  hover:bg-gray-200 cursor-pointer"
+            className={` flex gap-x-4 items-center p-4 ${
+                isDarkMode
+                    ? 'text-slate-200 bg-slate-800 hover:bg-gray-200 hover:text-slate-800'
+                    : ' text-slate-800 bg-slate-200 hover:bg-gray-800 hover:text-slate-200'
+            }    cursor-pointer`}
         >
             <Image
                 className="w-[100px] min-w-[100px] h-[60px] object-cover rounded-[4px]"
