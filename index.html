@@ -5,9 +5,141 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            .wrapper {
+                width: 50%;
+                border: 2px solid green;
+                padding: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            label {
+                font-size: 20px;
+            }
+
+            .wrapper h1 {
+                color: rgb(0, 240, 108);
+            }
+            .wrapper div {
+                margin-right: 100px;
+                width: 100%;
+                text-align: right;
+            }
+            .wrapper input {
+                font-size: 16px;
+                width: 70%;
+                padding: 12px 8px;
+                border-radius: 8px;
+                margin-top: 12px;
+            }
+            .btn {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                align-items: center;
+                margin-top: 20px;
+            }
+            .btn button {
+                padding: 6px 18px;
+                border: none;
+                outline: none;
+                background: green;
+                color: #fff;
+                font-size: 20px;
+            }
+            p {
+                display: none;
+            }
+        </style>
     </head>
+
     <body>
-      
-        <script></script>
+        <div class="wrapper">
+            <h1>FORM TÍNH TOÁN</h1>
+            <p class="p1">Bạn đã nhập sai giá trị a</p>
+            <p class="p2">Bạn đã nhập sai giá trị b</p>
+            <p class="p3">Bạn đã nhập sai cả 2 giá trị</p>
+            <div>
+                <label for="input1" class="input1">a:</label>
+                <input id="input1" type="text" />
+            </div>
+
+            <div>
+                <label for="input2">b:</label>
+                <input id="input2" type="text" />
+            </div>
+
+            <div>
+                <label for="input3">Kết quả:</label>
+                <input id="input3" type="text" />
+            </div>
+            <div class="btn">
+                <button onclick="cong()" id="cong">+</button>
+                <button onclick="tru()" id="tru">-</button>
+                <button onclick="nhan()" id="nhan">*</button>
+                <button onclick="chia()" id="chia">/</button>
+                <button onclick="reset()" id="reset">Reset</button>
+            </div>
+        </div>
+
+        <script>
+            let input1 = document.querySelector('#input1');
+            let input2 = document.querySelector('#input2');
+            let input3 = document.querySelector('#input3');
+            input1.onkeyup = function (e) {
+                document.querySelector('.p1').style.display = 'none';
+                if (e.key >= 48 || e.key <= 57) {
+                    console.log('true');
+                } else {
+                    document.querySelector('.p1').style.display = 'block';
+                    input1.value = '';
+                }
+            };
+
+            input2.onkeyup = function (e) {
+                document.querySelector('.p2').style.display = 'none';
+                console.log(e.key);
+                if (e.key >= 48 || e.key <= 57) {
+                    console.log('true');
+                } else {
+                    document.querySelector('.p2').style.display = 'block';
+                    input2.value = '';
+                }
+            };
+
+            function cong() {
+                let result = parseInt(input1.value) + parseInt(input2.value);
+                if (input1.value != '' && input2.value != '') {
+                    input3.value = result;
+                }
+            }
+
+            function tru() {
+                let result = parseInt(input1.value) - parseInt(input2.value);
+                if (input1.value != '' && input2.value != '') {
+                    input3.value = result;
+                }
+            }
+            function nhan() {
+                let result = parseInt(input1.value) * parseInt(input2.value);
+                if (input1.value != '' && input2.value != '') {
+                    input3.value = result;
+                }
+            }
+            function chia() {
+                let result = parseInt(input1.value) / parseInt(input2.value);
+                if (input1.value != '' && input2.value != '') {
+                    input3.value = result;
+                }
+            }
+
+            function reset() {
+                input1.value = '';
+                input2.value = '';
+            }
+        </script>
     </body>
 </html>

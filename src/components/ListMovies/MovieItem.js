@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
 import Image from '~/components/Image';
-import routes from '~/config/routes';
 import { MovieContext } from '~/store';
 import { setCurrentMovie } from '~/store/actions';
 

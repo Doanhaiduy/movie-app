@@ -4,6 +4,7 @@ import Header from '../Components/Header/';
 import Sidebar from '../Components/Sidebar/';
 import Footer from '../Components/Footer/Footer';
 import SidebarFooter from '~/layouts/Components/SidebarFooter';
+import ChatBox from '~/components/ChatBox/';
 
 function DefaultLayout({ children, noUseSide = false, title }) {
     return (
@@ -23,6 +24,7 @@ function DefaultLayout({ children, noUseSide = false, title }) {
             </div>
             <SidebarFooter />
             <Footer />
+            <ChatBox />
         </div>
     );
 }
