@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
-import Image from '~/components/Image';
 import { MovieContext } from '~/store';
+import Image from '~/components/Image';
 import { setCurrentMovie } from '~/store/actions';
 
 function MovieItem({
@@ -13,6 +13,7 @@ function MovieItem({
     handleDeleteFavoriteMovie,
     isSuggested = false,
     isHome = false,
+    setIsLoading,
 }) {
     const [state, dispatch] = useContext(MovieContext);
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
@@ -28,7 +29,7 @@ function MovieItem({
 
     return !isSuggested ? (
         <div
-            className={`max-w-sm  ${
+            className={`max-w-[500px] ${
                 isDarkMode ? 'bg-gray-800 border border-gray-200' : 'bg-white border border-gray-900'
             } rounded-lg shadow  `}
         >
@@ -45,6 +46,7 @@ function MovieItem({
                     alt=""
                 />
             </Link>
+
             <div className="p-5 ">
                 <Link
                     to={'/movie/' + data.id}
@@ -142,6 +144,7 @@ function MovieItem({
         <Link
             to={'/movie/' + data.id}
             onClick={() => {
+                setIsLoading(true);
                 handleSetCurrentMovie(data);
             }}
             className={`sm:p-4 px-4 flex flex-col items-center  rounded-[15px] shadow lg:flex-row w-full   overflow-hidden
@@ -158,7 +161,7 @@ function MovieItem({
             />
             <div className="flex flex-col justify-between p-4 leading-normal overflow-x-hidden">
                 <h5
-                    className={`mb-2 text-2xl font-bold tracking-tight text-[2rem] 
+                    className={`mb-2 text-2xl font-bold tracking-tight text-[2rem] line-clamp-2
                 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
                 >
                     {data.title}

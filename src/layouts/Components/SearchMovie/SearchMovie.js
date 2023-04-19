@@ -1,13 +1,13 @@
-import MovieItemSearch from '~/components/MovieItemSearch/';
 import { useEffect, useRef, useState, useContext } from 'react';
 import Tippy from '@tippyjs/react/headless';
-import { MovieContext } from '~/store';
-
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { search } from '~/services';
-import { useDebounce } from '~/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
+import { useDebounce } from '~/hooks';
+import { MovieContext } from '~/store';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { search } from '~/services';
+import MovieItemSearch from '~/components/MovieItemSearch/';
 
 function SearchMovie({ activeSearch = false }) {
     const [searchInput, setSearchInput] = useState('');

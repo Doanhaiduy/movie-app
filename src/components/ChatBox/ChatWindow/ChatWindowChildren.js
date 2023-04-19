@@ -1,11 +1,12 @@
 import { Fragment, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSmileWink } from '@fortawesome/free-solid-svg-icons';
+
 import ChatSearchMovie from './ChatSearchMovie';
-import { Link } from 'react-router-dom';
 import { search as searchService } from '~/services';
 import ItemMovie from './ItemMovie';
 import Image from '~/components/Image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSmile, faSmileWink } from '@fortawesome/free-solid-svg-icons';
+
 const select = [
     {
         title: 'Hi, can you recommend an action movie?', //user question
@@ -134,7 +135,6 @@ function ChatWindowChildren({ name }) {
     const [optionChat, setOptionChat] = useState(select);
     const [movies, setMovies] = useState([]);
     const [onSearch, setOnSearch] = useState(false);
-    // const [chatUser, setChatUser] = useState('');
 
     const handleSearchMovie = (searchInput) => {
         setOnSearch(true);

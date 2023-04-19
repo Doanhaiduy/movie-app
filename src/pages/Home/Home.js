@@ -1,13 +1,14 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { MovieContext } from '~/store';
 
+import { MovieContext } from '~/store';
 import ListMovies from '~/components/ListMovies/';
 import routes from '~/config/routes';
 
 function Home() {
     const [state, dispatch] = useContext(MovieContext);
+    
     const isDarkMode = state.isDarkMode;
     return (
         <Fragment>

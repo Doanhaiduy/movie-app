@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import { MovieContext } from '~/store';
 import { setCurrentMovie } from '~/store/actions';
-import { useContext } from 'react';
 import Image from '~/components/Image/';
 
 function ItemMovie({ data }) {

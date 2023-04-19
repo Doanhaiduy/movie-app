@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react'; 
 
 import Image from '~/components/Image';
-
-import { useContext } from 'react';
 import { MovieContext } from '~/store';
 
 function Footer() {

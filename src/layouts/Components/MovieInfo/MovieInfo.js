@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+
 import Image from '~/components/Image';
 
 function MovieInfo({ currentMovie, isDarkMode }) {
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
     const URL = currentMovie.movieCurrentURL;
+
     currentMovie = currentMovie.movieCurrentObj;
 
     return (

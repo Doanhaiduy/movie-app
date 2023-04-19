@@ -1,6 +1,7 @@
 import { faCircle, faHandsClapping, faPaperPlane, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fragment, useState } from 'react';
+
 import Button from '~/components/Button/';
 import routes from '~/config/routes';
 import ChatWindowChildren from './ChatWindowChildren';
@@ -9,7 +10,6 @@ function ChatWindow({ handleOpenChat }) {
     const [name, setName] = useState('');
     const [option, setOption] = useState('');
     const [startChatOnline, setStartChatOnline] = useState(false);
-    // const []
 
     const handleToChatOnline = (name) => {
         setStartChatOnline(true);

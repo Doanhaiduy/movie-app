@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import { MovieContext } from '~/store';
-
-import routes from '~/config/routes';
-import NavItem from '~/components/NavItem/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { MovieContext } from '~/store';
+import routes from '~/config/routes';
+import NavItem from '~/components/NavItem/';
 import SearchMovie from '../SearchMovie/SearchMovie';
 import Image from '~/components/Image';
 import { setTheme } from '~/store/actions';
@@ -13,10 +13,10 @@ import Theme from '../Theme';
 
 function Header({ title }) {
     const [state, dispatch] = useContext(MovieContext);
-    const isDarkMode = state.isDarkMode;
-
     const [activeSearch, setActiveSearch] = useState(false);
-
+    
+    const isDarkMode = state.isDarkMode;
+    
     const setIsDarkMode = () => {
         dispatch(setTheme());
     };

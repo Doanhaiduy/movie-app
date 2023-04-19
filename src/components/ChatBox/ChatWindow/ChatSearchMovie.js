@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ItemMovie from './ItemMovie';
+
 function ChatSearchMovie({ handleSearchMovie, movies }) {
     const [searchInput, setSearchInput] = useState('');
 

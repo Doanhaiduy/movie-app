@@ -4,8 +4,8 @@ import { MovieContext } from '~/store';
 function Search({ onSubmit }) {
     const [searchInput, setSearchInput] = useState('');
     const [state, dispatch] = useContext(MovieContext);
-    const isDarkMode = state.isDarkMode;
 
+    const isDarkMode = state.isDarkMode;
     const inputRef = useRef();
 
     return (

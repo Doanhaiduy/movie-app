@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-
-import Image from '../Image/Image';
-import { MovieContext } from '~/store';
 import { useContext } from 'react';
+
+import { MovieContext } from '~/store';
+import Image from '../Image/Image';
 import { setCurrentMovie } from '~/store/actions';
 
 function MovieItemSearch({ data, onClick, isDarkMode }) {

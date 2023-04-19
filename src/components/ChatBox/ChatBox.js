@@ -1,12 +1,14 @@
 import { faComment, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fragment, useState, useContext } from 'react';
+
 import ChatWindow from './ChatWindow/';
 import { MovieContext } from '~/store';
 
 function ChatBox() {
     const [openChat, setOpenChat] = useState(false);
     const [state, dispatch] = useContext(MovieContext);
+    
     const isDarkMode = state.isDarkMode;
 
     const handleOpenChat = () => {

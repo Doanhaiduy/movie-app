@@ -1,13 +1,15 @@
+import { useContext } from 'react';
 import { faHeart, faMusic, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { faFilm, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
+
 import routes from '~/config/routes';
 import { MovieContext } from '~/store';
-import { useContext } from 'react';
 
 function SidebarFooter() {
     const [state, dispatch] = useContext(MovieContext);
+    
     const isDarkMode = state.isDarkMode;
 
     const handleScrollToTop = () => {
@@ -15,7 +17,7 @@ function SidebarFooter() {
     };
     return (
         <nav
-            className={`fixed left-0 right-0 bottom-0  flex sm:hidden items-center justify-between  px-10
+            className={`fixed left-0 right-0 bottom-0  flex sm:hidden items-center justify-between  px-10 z-30
             ${isDarkMode ? 'text-gray-500 bg-slate-900 ' : 'bg-gray-300 text-gray-500'}`}
         >
             <NavLink
