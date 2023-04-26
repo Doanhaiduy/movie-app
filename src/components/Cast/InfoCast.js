@@ -55,7 +55,7 @@ function InfoCast({ onClick, id }) {
                             <strong>Bio: </strong>
                             <span className="text-[1.4rem] line-clamp-[7] min-h-[147px] ">{infoCast.biography}</span>
                         </div>
-                        <div className="sm:absolute lg:static sm:left-[20px] left-0 sm:bottom-[20px] bottom-[-300px] absolute overflow-auto ">
+                        <div className="sm:absolute lg:static sm:left-[20px] left-0 sm:bottom-[20px] bottom-[-310px] absolute overflow-auto ">
                             <strong className="sm:ml-[10px] ml-[16px] lg:ml-0">Filmography: </strong>
                             <div className="sm:flex grid grid-cols-3 sm:gap-0 gap-y-[100px] ml-[8px] sm:ml-0">
                                 <Filmography id={id} />

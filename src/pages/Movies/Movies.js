@@ -27,8 +27,8 @@ function Movies() {
                 isDarkMode ? 'from-gray-950 to-gray-200 text-[#fff]' : 'to-gray-950 from-gray-200 text-[#000]'
             }`}
         >
-            <div className="px-[20px]">
-                <nav className="list-none flex gap-[12px] p-10">
+            <div className="px-[20px] ">
+                <nav className="list-none flex gap-[12px] p-10 w-[50%] flex-wrap">
                     <li
                         onClick={() => {
                             handleSetType('all', 4);

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { MovieContext } from '~/store';
 
 function Theme({ toggle, theme }) {
+    const [state, dispatch] = useContext(MovieContext);
+    const isDarkMode = state.isDarkMode;
+
     return (
         <label className=" inline-flex items-center cursor-pointer relative ">
-            <input type="checkbox" defaultValue className="sr-only peer" onChange={toggle} />
+            <input type="checkbox" defaultValue className="sr-only peer" checked={isDarkMode} onChange={toggle} />
             <div
                 className={`w-14 h-7  peer-focus:outline-none peer-focus:ring-4 
                   rounded-full peer  peer-checked:after:translate-x-full 
