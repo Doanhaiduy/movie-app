@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import { MovieContext } from '~/store';
 import Image from '~/components/Image';
 import { setCurrentMovie } from '~/store/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function MovieItem({
     data,
@@ -16,10 +18,13 @@ function MovieItem({
     setIsLoading,
 }) {
     const [state, dispatch] = useContext(MovieContext);
+
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
-
+    const n = parseInt(data.vote_average / 2);
+    const n2 = 5 - n;
+    const arrStar = new Array(n).fill(null);
+    const arrStar2 = new Array(n2).fill(null);
     const isDarkMode = state.isDarkMode;
-
     const ListMoviesFavoriteStorage = JSON.parse(localStorage.getItem('moviesFavorite')) || [];
     const ListIdsFavoriteStorage = ListMoviesFavoriteStorage.map((item) => item.id);
     const handleSetCurrentMovie = (payload) => {
@@ -29,7 +34,7 @@ function MovieItem({
 
     return !isSuggested ? (
         <div
-            className={`max-w-[500px] ${
+            className={`transition-colors duration-500 max-w-[500px] ${
                 isDarkMode ? 'bg-gray-800 border border-gray-200' : 'bg-white border border-gray-900'
             } rounded-lg shadow  `}
         >
@@ -55,22 +60,34 @@ function MovieItem({
                     }}
                 >
                     <h5
-                        className={`h-[40px] mb-2 text-2xl font-bold tracking-tight ${
+                        className={`transition-colors duration-500 h-[40px] mb-2 text-2xl font-bold tracking-tight ${
                             isDarkMode ? 'text-white' : ' text-gray-900'
                         } line-clamp-2`}
                     >
                         {data.title}
                     </h5>
                 </Link>
-                <p className={`mb-3 font-normal ${isDarkMode ? 'text-gray-400 ' : ' text-gray-700'}`}>
-                    Vote: {data.vote_count}
+                <p
+                    className={`transition-colors duration-500 mb-3 font-normal flex justify-between items-center ${
+                        isDarkMode ? 'text-gray-400 ' : ' text-gray-700'
+                    }`}
+                >
+                    <span>Vote: {data.vote_average}</span>
+                    <span className="text-[1rem] flex gap-[4px]">
+                        {arrStar2.map((item, index) => (
+                            <FontAwesomeIcon key={index} icon={faStar} className="" />
+                        ))}
+                        {arrStar.map((starItem, index) => (
+                            <FontAwesomeIcon key={index} icon={faStar} className="text-yellow-400" />
+                        ))}
+                    </span>
                 </p>
                 <Link
                     to={'/movie/' + data.id}
                     onClick={() => {
                         handleSetCurrentMovie(data);
                     }}
-                    className={`${
+                    className={`transition-colors duration-500 ${
                         isDarkMode ? 'text-white focus:ring-pink-800' : ' text-gray-900 focus:ring-pink-200'
                     } bg-gradient-to-br text-[1.4rem] from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  font-medium rounded-lg item-center justify-center px-5 py-3.5 flex text-center mr-2 mb-2 w-full`}
                 >
@@ -82,13 +99,13 @@ function MovieItem({
                             onClick={() => {
                                 handleAddFavoriteMovie(index);
                             }}
-                            className={`select-none
+                            className={`transition-colors duration-500 select-none
                     relative inline-flex items-center justify-center w-full p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium  rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 
                     ${isDarkMode ? ' text-white hover:text-gray-900' : ' text-gray-900 hover:text-white '}
                     `}
                         >
                             <span
-                                className={`relative px-5 w-full py-2.5 transition-all ease-in duration-75   rounded-md group-hover:bg-opacity-0
+                                className={` relative px-5 w-full py-2.5 transition-all ease-in duration-75   rounded-md group-hover:bg-opacity-0
                                 ${isDarkMode ? 'bg-gray-900' : 'bg-white '}`}
                             >
                                 Add To Favorite
@@ -96,7 +113,7 @@ function MovieItem({
                         </button>
                     ) : (
                         <button
-                            className={`pointer-events-none
+                            className={`transition-colors duration-500 pointer-events-none
                             select-none
                                 opacity-50
                     relative inline-flex items-center w-full justify-center p-0.5 my-3  overflow-hidden text-[1.2rem] font-medium  rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400  
@@ -161,13 +178,13 @@ function MovieItem({
             />
             <div className="flex flex-col justify-between p-4 leading-normal overflow-x-hidden">
                 <h5
-                    className={`mb-2 text-2xl font-bold tracking-tight text-[2rem] line-clamp-2
+                    className={`transition-colors duration-500 mb-2 text-2xl font-bold tracking-tight text-[2rem] line-clamp-2
                 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
                 >
                     {data.title}
                 </h5>
                 <p
-                    className={`mb-3 font-normal   line-clamp-5
+                    className={`transition-colors duration-500 mb-3 font-normal   line-clamp-5
                 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}
                 >
                     {data.overview}

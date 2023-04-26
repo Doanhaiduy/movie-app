@@ -20,8 +20,13 @@ function TrailerVideo({ id }) {
     }, [id]);
     return (
         <ReactPlayer
-            width={'50vw'}
-            url={`https://www.youtube.com/watch?v=${movie}`}
+            config={{
+                youtube: {
+                    playerVars: { origin: 'http://localhost:3000' },
+                },
+            }}
+            width={'100%'}
+            url={`https://www.youtube.com/embed/${movie}`}
             controls={false}
         />
     );

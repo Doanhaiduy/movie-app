@@ -12,7 +12,7 @@ function SkeletonSimilar({ cards = 1 }) {
                     <Skeleton height={'100%'} width={'100%'} className="" />
                 </div>
 
-                <div class="flex flex-col lg:w-[50%] w-full lg:h-full h-[50%] justify-center  lg:pl-[10px] leading-normal overflow-x-hidden p-4 lg:p-0">
+                <div className="flex flex-col lg:w-[50%] w-full lg:h-full h-[50%] justify-center  lg:pl-[10px] leading-normal overflow-x-hidden p-4 lg:p-0">
                     <Skeleton height={30} width={'100%'} className="mb-2" />
                     <Skeleton height={12} width={'100%'} count={5} className="" />
                 </div>

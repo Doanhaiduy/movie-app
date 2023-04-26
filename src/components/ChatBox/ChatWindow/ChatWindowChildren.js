@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmileWink } from '@fortawesome/free-solid-svg-icons';
 
@@ -135,6 +135,7 @@ function ChatWindowChildren({ name }) {
     const [optionChat, setOptionChat] = useState(select);
     const [movies, setMovies] = useState([]);
     const [onSearch, setOnSearch] = useState(false);
+    const chatRef = useRef();
 
     const handleSearchMovie = (searchInput) => {
         setOnSearch(true);
@@ -143,10 +144,11 @@ function ChatWindowChildren({ name }) {
             setMovies(result.results);
         };
         fetchApi(searchInput);
+        // chatRef.current.scrollTo(0);
     };
     return (
         <Fragment>
-            <div className="p-[30px] pt-[16px] min-h-[320px] max-h-[320px] overflow-y-auto">
+            <div ref={chatRef} className="p-[30px] pt-[16px] min-h-[320px] max-h-[320px] overflow-y-auto">
                 <div>
                     <div className="my-[10px]">
                         <span className="text-[1.2rem] block text-center my-[12px]">

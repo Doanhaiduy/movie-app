@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react'; 
+import { useContext } from 'react';
 
 import Image from '~/components/Image';
 import { MovieContext } from '~/store';
@@ -9,8 +9,8 @@ function Footer() {
     const isDarkMode = state.isDarkMode;
     return (
         <footer
-            className={` flex justify-center items-center flex-col py-[30px] ${
-                isDarkMode ? 'bg-slate-500 text-slate-900 ' : 'bg-slate-700 text-slate-300'
+            className={`transition-colors duration-500 flex justify-center items-center flex-col py-[30px] ${
+                isDarkMode ? 'text-slate-300 bg-gray-950 ' : 'bg-gray-200 text-slate-900'
             }  gap-y-[20px] text-[1.2rem] sm:mb-0 mb-[65px]`}
         >
             <div className="">
@@ -35,11 +35,7 @@ function Footer() {
             <div className="text-center">
                 <p className="">
                     &copy; Copyright -{' '}
-                    <Link
-                        to="https://www.facebook.com/DoanHaiDuy.Profile/"
-                        target="_blank"
-                        className={isDarkMode ? 'text-slate-900' : 'text-slate-300'}
-                    >
+                    <Link to="https://www.facebook.com/DoanHaiDuy.Profile/" target="_blank">
                         Doan Hai Duy
                     </Link>
                 </p>

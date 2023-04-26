@@ -12,7 +12,7 @@ function Shows() {
 
     return (
         <div
-            className={`w-full h-[1000px] bg-gradient-to-b ${
+            className={`transition-colors duration-500 w-full h-[1000px] bg-gradient-to-b ${
                 isDarkMode ? 'from-gray-950 to-gray-200 text-[#fff]' : 'to-gray-950 from-gray-200 text-[#000]'
             }`}
         >

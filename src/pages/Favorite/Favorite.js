@@ -25,7 +25,7 @@ function Favorite() {
 
     return (
         <div
-            className={`w-full p-[20px] bg-gradient-to-b  min-h-[100vh]
+            className={`transition-colors duration-500 w-full p-[20px] bg-gradient-to-b  min-h-[100vh]
         ${isDarkMode ? 'from-gray-950 to-gray-200 text-[#fff]' : 'to-gray-950 from-gray-200 text-[#000]'}`}
         >
             <h2 className="text-[6rem] font-bold  flex items-center justify-center text-center">Favorite page</h2>
@@ -35,7 +35,7 @@ function Favorite() {
                     <Skeleton width={50} height={30} />
                 ) : (
                     <span
-                        className={`text-[2rem] px-1 ml-3 w-[50px] inline-block text-center
+                        className={`transition-colors duration-500 text-[2rem] px-1 ml-3 w-[50px] inline-block text-center
                 ${isDarkMode ? 'text-slate-800 bg-slate-200' : 'text-slate-200 bg-slate-800'}
 `}
                     >

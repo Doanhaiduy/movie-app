@@ -18,7 +18,7 @@ const reducer = (state, action) => {
         case ADD_TO_FAVORITE: {
             const newState = {
                 ...state,
-                favoriteMovies: [...state.favoriteMovies, action.payload],
+                favoriteMovies: [action.payload, ...state.favoriteMovies],
             };
             return newState;
         }

@@ -17,14 +17,14 @@ function SidebarFooter() {
     };
     return (
         <nav
-            className={`fixed left-0 right-0 bottom-0  flex sm:hidden items-center justify-between  px-10 z-30
+            className={`fixed left-0 right-0 bottom-0  flex sm:hidden items-center justify-between  px-10 z-30 transition-colors duration-500
             ${isDarkMode ? 'text-gray-500 bg-slate-900 ' : 'bg-gray-300 text-gray-500'}`}
         >
             <NavLink
                 onClick={handleScrollToTop}
                 className={({ isActive }) =>
                     isActive
-                        ? `flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
+                        ? `transition-colors duration-500 flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
                               isDarkMode ? 'text-[#fff]' : ' text-[#000]'
                           } font-[500]`
                         : 'flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center'
@@ -38,7 +38,7 @@ function SidebarFooter() {
                 onClick={handleScrollToTop}
                 className={({ isActive }) =>
                     isActive
-                        ? `flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
+                        ? `transition-colors duration-500 flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
                               isDarkMode ? 'text-[#fff]' : ' text-[#000]'
                           } font-[500]`
                         : 'flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center'
@@ -52,7 +52,7 @@ function SidebarFooter() {
                 onClick={handleScrollToTop}
                 className={({ isActive }) =>
                     isActive
-                        ? `flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
+                        ? `transition-colors duration-500 flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
                               isDarkMode ? 'text-[#fff]' : ' text-[#000]'
                           } font-[500]`
                         : 'flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center'
@@ -66,7 +66,7 @@ function SidebarFooter() {
                 onClick={handleScrollToTop}
                 className={({ isActive }) =>
                     isActive
-                        ? `flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
+                        ? `transition-colors duration-500 flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
                               isDarkMode ? 'text-[#fff]' : ' text-[#000]'
                           } font-[500]`
                         : 'flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center'
@@ -80,7 +80,7 @@ function SidebarFooter() {
                 onClick={handleScrollToTop}
                 className={({ isActive }) =>
                     isActive
-                        ? `flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
+                        ? `transition-colors duration-500 flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center ${
                               isDarkMode ? 'text-[#fff]' : ' text-[#000]'
                           } font-[500]`
                         : 'flex flex-col items-center px-5 py-6 gap-y-2  text-[1.2rem] justify-center'

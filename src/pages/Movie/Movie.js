@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect, useState } from 'react';
+import { Fragment, useCallback, useContext, useEffect, useState } from 'react';
 
 import { MovieContext } from '~/store';
 import { MovieItem } from '~/components/ListMovies';
@@ -6,6 +6,7 @@ import MovieInfo from '~/layouts/Components/MovieInfo/';
 import { similar } from '~/services';
 import TrailerVideo from '~/components/TrailerVideo';
 import { SkeletonInfo, SkeletonOverView, SkeletonSimilar } from '~/components/LoadingSkeleton';
+import Cast from '~/components/Cast';
 
 function Movie() {
     const [moviesSimilar, setMoviesSimilar] = useState([]);
@@ -15,24 +16,24 @@ function Movie() {
     const currentMovie = state.currentMovie.movieCurrentObj;
     const isDarkMode = state.isDarkMode;
 
-    const fetchApi = async (id) => {
+    const fetchApi = useCallback(async (id) => {
         const result = await similar(id);
         setMoviesSimilar(result.results);
-    };
+    }, []);
 
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
         fetchApi(currentMovie.id);
-    }, [currentMovie]);
+    }, [currentMovie, fetchApi]);
 
     useEffect(() => {
         document.title = currentMovie.title;
     }, [currentMovie.title]);
     return (
         <div
-            className={`wrapper p-[24px] bg-gradient-to-b ${
+            className={`wrapper p-[24px] bg-gradient-to-b transition-colors duration-500 ${
                 isDarkMode ? 'from-gray-950 to-gray-200 text-[#fff]' : 'to-gray-950 from-gray-200 text-[#000]'
             } overflow-hidden`}
         >
@@ -49,23 +50,28 @@ function Movie() {
                     <MovieInfo currentMovie={state.currentMovie} isDarkMode={isDarkMode} />
                 </Fragment>
             )}
+            <h2 className="text-[3rem] font-bold  my-[20px]">The cast</h2>
+
+            <Cast id={currentMovie.id} />
 
             <div className="mt-[30px] ">
                 {isLoading ? (
                     <SkeletonOverView />
                 ) : (
-                    <div className="w-[100%] flex  justify-between">
+                    <div className="w-[100%] flex sm:flex-row flex-col  justify-between">
                         <div className="pr-[24px] ">
-                            <h3 className="text-[3rem]  font-bold  mb-[20px]">Description</h3>
+                            <h3 className="text-[3rem] font-bold  mb-[20px]">Description</h3>
                             <p
-                                className={`text-[2rem]${isDarkMode ? 'text-slate-300' : 'text-slate-900'}
+                                className={`transition-colors duration-500 text-[2rem]${
+                                    isDarkMode ? 'text-slate-300' : 'text-slate-900'
+                                }
 `}
                             >
                                 {currentMovie.overview}
                             </p>
                         </div>
-                        <div className="">
-                            <h3 className="text-[3rem] font-bold  mb-[20px]">Trailer</h3>
+                        <div className="min-w-[50%]">
+                            <h3 className="text-[3rem] font-bold  mb-[20px] sm:mt-0 mt-[20px]">Trailer</h3>
 
                             <TrailerVideo id={currentMovie.id} />
                         </div>
@@ -80,7 +86,11 @@ function Movie() {
                             <MovieItem key={index} data={item} isSuggested setIsLoading={setIsLoading} />
                         ))
                     ) : (
-                        <p className={`text-[2rem] ${isDarkMode ? 'text-gray-700' : 'text-gray-500'}`}>
+                        <p
+                            className={`transition-colors duration-500 text-[2rem] ${
+                                isDarkMode ? 'text-gray-700' : 'text-gray-500'
+                            }`}
+                        >
                             Sorry, we can't find movies related to this movie in our database
                         </p>
                     )}

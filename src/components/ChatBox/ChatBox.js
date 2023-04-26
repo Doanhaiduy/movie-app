@@ -8,7 +8,7 @@ import { MovieContext } from '~/store';
 function ChatBox() {
     const [openChat, setOpenChat] = useState(false);
     const [state, dispatch] = useContext(MovieContext);
-    
+
     const isDarkMode = state.isDarkMode;
 
     const handleOpenChat = () => {
@@ -18,7 +18,7 @@ function ChatBox() {
         <div className="fixed sm:right-[60px] sm:bottom-[80px] right-[60px] bottom-[80px] z-30  cursor-pointer font-semibold  gap-x-[6px] transition-all">
             {!openChat ? (
                 <div
-                    className={` select-none px-[16px] py-[10px] rounded-[999px] ${
+                    className={` transition-colors duration-500 select-none px-[16px] py-[10px] rounded-[999px] ${
                         isDarkMode ? 'bg-slate-700 text-white ' : 'bg-slate-100 text-slate-700'
                     }`}
                     onClick={handleOpenChat}
@@ -30,7 +30,7 @@ function ChatBox() {
                 <Fragment>
                     <div className="relative">
                         <FontAwesomeIcon
-                            className={` select-none  px-[16px] py-[10px] rounded-[999px] text-[2rem]  ${
+                            className={`transition-colors duration-500 select-none  px-[16px] py-[10px] rounded-[999px] text-[2rem]  ${
                                 isDarkMode ? 'bg-slate-700 text-white ' : 'bg-slate-100 text-slate-700'
                             }`}
                             icon={faXmark}

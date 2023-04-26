@@ -34,6 +34,19 @@ function SearchMovie({ activeSearch = false }) {
         fetchApi();
     }, [debounceValue]);
 
+    // useEffect(() => {
+    //     if (activeSearch) {
+    //         inputRef.current.focus();
+    //     }
+    //     const fetchApi = async () => {
+    //         setIsLoading(true);
+    //         const result = await search(searchInput);
+    //         setSearchResult(result.results);
+    //         setIsLoading(false);
+    //     };
+    //     fetchApi();
+    // }, [searchInput]);
+
     const handleShowResult = () => {
         setIsShowResult(true);
     };
@@ -56,7 +69,9 @@ function SearchMovie({ activeSearch = false }) {
             render={(attrs) => (
                 <div
                     className={`overscroll-y-contain ml-[10vw] sm:ml-0  w-[80vw] sm:w-[600px] rounded-[2px] max-h-[80vh] overflow-y-auto
-                    ${isDarkMode ? 'text-slate-200 bg-slate-800' : ' text-slate-800 bg-slate-200'}`}
+                    transition-colors duration-500 ${
+                        isDarkMode ? 'text-slate-200 bg-slate-800' : ' text-slate-800 bg-slate-200'
+                    }`}
                     tabIndex="-1"
                     {...attrs}
                 >
@@ -83,7 +98,7 @@ function SearchMovie({ activeSearch = false }) {
                     }}
                     type="text"
                     placeholder="Search movie..."
-                    className={`${
+                    className={`transition-colors duration-500 ${
                         isDarkMode ? 'text-slate-800 bg-slate-200' : '  text-slate-200 bg-slate-800'
                     } sm:mx-5 sm:flex-1 rounded-[999px] border-none outline-none py-[6px] px-3`}
                 />

@@ -14,8 +14,8 @@ function DefaultLayout({ children, noUseSide = false, title }) {
 
     return (
         <SkeletonTheme
-            baseColor={`${isDarkMode ? '#dbdbdb' : '#202020'}`}
-            highlightColor={`${isDarkMode ? '#f5f5f5' : '#444'}`}
+            baseColor={` ${isDarkMode ? '#dbdbdb' : '#202020'}`}
+            highlightColor={` ${isDarkMode ? '#f5f5f5' : '#444'}`}
         >
             <div className="">
                 <Header title={title} />

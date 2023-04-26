@@ -12,7 +12,9 @@ function Search({ onSubmit }) {
         <div className="w-[50vw] h-[60px] mx-auto mt-[26px]">
             <label
                 htmlFor="default-search"
-                className={`mb-2 text-sm font-medium sr-only  ${isDarkMode ? 'text-[#fff]' : 'text-gray-900'}`}
+                className={` transition-colors duration-500 mb-2 text-sm font-medium sr-only  ${
+                    isDarkMode ? 'text-[#fff]' : 'text-gray-900'
+                }`}
             >
                 Search
             </label>

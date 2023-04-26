@@ -14,9 +14,9 @@ import Theme from '../Theme';
 function Header({ title }) {
     const [state, dispatch] = useContext(MovieContext);
     const [activeSearch, setActiveSearch] = useState(false);
-    
+
     const isDarkMode = state.isDarkMode;
-    
+
     const setIsDarkMode = () => {
         dispatch(setTheme());
     };
@@ -30,9 +30,13 @@ function Header({ title }) {
     };
 
     return (
-        <div className={`w-full max-w-full fixed z-50 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-200'}`}>
+        <div
+            className={`transition-colors duration-500 w-full max-w-full fixed z-50 ${
+                isDarkMode ? 'bg-gray-950' : 'bg-gray-200'
+            }`}
+        >
             <div
-                className={`flex relative items-center lg:justify-between p-10 sm:w-full ${
+                className={`transition-colors duration-500 flex relative items-center lg:justify-between p-10 sm:w-full ${
                     isDarkMode ? 'text-slate-300' : 'text-slate-900'
                 } lg:px-[80px] lg:mx-auto  justify-between w-[100vw]`}
             >
