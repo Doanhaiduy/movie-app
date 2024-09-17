@@ -22,7 +22,7 @@ function MovieItem({
     const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
     const n = parseInt(data.vote_average / 2);
     const n2 = 5 - n;
-    const arrStar = new Array(n).fill(null);
+    const arrStar = new Array(n).fill(0);
     const arrStar2 = new Array(n2).fill(null);
     const isDarkMode = state.isDarkMode;
     const ListMoviesFavoriteStorage = JSON.parse(localStorage.getItem('moviesFavorite')) || [];

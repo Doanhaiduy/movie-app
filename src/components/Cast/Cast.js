@@ -61,6 +61,7 @@ function Cast({ id }) {
                             />
                         </div>
                         <div className="font-medium text-center">{cast.name}</div>
+                        <p className="text-[1rem]">{cast.character}</p>
                     </div>
                 ))
             )}

@@ -7,6 +7,7 @@ import { similar } from '~/services';
 import TrailerVideo from '~/components/TrailerVideo';
 import { SkeletonInfo, SkeletonOverView, SkeletonSimilar } from '~/components/LoadingSkeleton';
 import Cast from '~/components/Cast';
+import GenresMovie from '~/components/GenresMovie';
 
 function Movie() {
     const [moviesSimilar, setMoviesSimilar] = useState([]);
@@ -43,9 +44,10 @@ function Movie() {
                 <Fragment>
                     <div className="w-full mx-auto mb-[12px]">
                         <h2 className="text-[5rem] font-bold uppercase text-center">{currentMovie.title}</h2>
-                        <h4 className="font-semibold text-[2rem] my-[20px] text-center">
-                            {currentMovie.original_title}
-                        </h4>
+                        <div className="font-semibold text-[2rem] my-[20px] items-center justify-center flex gap-x-[32px] ">
+                            Genres: {<GenresMovie id={currentMovie.id} />}
+                            {/* {currentMovie.original_title} */}
+                        </div>
                     </div>
                     <MovieInfo currentMovie={state.currentMovie} isDarkMode={isDarkMode} />
                 </Fragment>

@@ -97,7 +97,6 @@ function ListMovies({ page = false, type = 'all', pageNumProp = 1 }) {
     };
 
     const handlePrevPage = () => {
-
         if (pageNum === 1) {
             return;
         } else {
@@ -108,7 +107,6 @@ function ListMovies({ page = false, type = 'all', pageNumProp = 1 }) {
     const handleNextPage = () => {
         setPageNum((prev) => prev + 1);
     };
-
     return (
         <Fragment>
             {page ? null : <h2 className="text-[3rem] font-semibold p-10 uppercase">{type}</h2>}
@@ -132,15 +130,17 @@ function ListMovies({ page = false, type = 'all', pageNumProp = 1 }) {
             <div className=" grid mx-10 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 md:gap-x-[10px] grid-cols-2 gap-[16px] mt-5">
                 {isLoading ? (
                     <SkeletonCard cards={movies.length} />
-                ) : movies.length > 0 ? (
-                    movies.map((movie, index) => (
-                        <MovieItem
-                            data={movie}
-                            key={index}
-                            index={index}
-                            handleAddFavoriteMovie={handleAddFavoriteMovie}
-                        />
-                    ))
+                ) : movies.slice(1).length > 0 ? (
+                    movies
+                        .slice(1)
+                        .map((movie, index) => (
+                            <MovieItem
+                                data={movie}
+                                key={index}
+                                index={index}
+                                handleAddFavoriteMovie={handleAddFavoriteMovie}
+                            />
+                        ))
                 ) : (
                     <div className="w-full col-span-full mt-6">
                         <h2 className="text-center text-[24px]">Can't find the movie on demand</h2>
